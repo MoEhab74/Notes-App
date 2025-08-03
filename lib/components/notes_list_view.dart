@@ -11,7 +11,7 @@ class NotesListView extends StatelessWidget {
         shrinkWrap: true,
         itemCount: 10,
         itemBuilder: (context,index){
-          return NoteItem();
+          return const NoteItem();
       }),
     );
   }
