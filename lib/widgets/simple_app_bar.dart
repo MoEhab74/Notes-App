@@ -12,7 +12,7 @@ class SimpleAppBar extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text('Notes', style: TextStyle(fontSize: 30)),
-                SimpleSearchIcon(),
+                SimpleSearchIcon(icon: Icon(Icons.search, size: 35),),
               ],
             ),
           );
