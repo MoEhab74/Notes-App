@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/widgets/simple_search_icon.dart';
 
 class SimpleAppBar extends StatelessWidget {
-  const SimpleAppBar({super.key});
+  const SimpleAppBar({super.key, required this.icon, required this.title});
+  final Icon icon;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -11,8 +13,8 @@ class SimpleAppBar extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Notes', style: TextStyle(fontSize: 30)),
-                SimpleSearchIcon(icon: Icon(Icons.search, size: 35),),
+                Text(title, style: TextStyle(fontSize: 30)),
+                SimpleSearchIcon(icon: icon),
               ],
             ),
           );

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/constants.dart';
 
 class CustomElevatedBottom extends StatelessWidget {
-  const CustomElevatedBottom({super.key});
+  const CustomElevatedBottom({super.key, required this.text});
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class CustomElevatedBottom extends StatelessWidget {
         ),
         onPressed: () {},
         child: Text(
-          'Add',
+          text,
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
