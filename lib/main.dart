@@ -4,12 +4,16 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:notes_app/constants.dart';
 import 'package:notes_app/cubits/add_note_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
+import 'package:notes_app/simple_bloc_observer.dart';
 import 'package:notes_app/views/notes_view.dart';
 
 void main() async {
   await Hive.initFlutter();
   await Hive.openBox(kNotesBox);
+  // Register the adaptor that u are going to store
   Hive.registerAdapter(NoteModelAdapter());
+  // Observer for cubit
+  Bloc.observer = SimpleBlocObserver();
   runApp(const NoteApp());
 }
 
