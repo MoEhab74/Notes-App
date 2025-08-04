@@ -9,9 +9,11 @@ import 'package:notes_app/views/notes_view.dart';
 
 void main() async {
   await Hive.initFlutter();
-  await Hive.openBox(kNotesBox);
+  
   // Register the adaptor that u are going to store
   Hive.registerAdapter(NoteModelAdapter());
+  // open box
+  await Hive.openBox<NoteModel>(kNotesBox);
   // Observer for cubit
   Bloc.observer = SimpleBlocObserver();
   runApp(const NoteApp());

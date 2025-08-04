@@ -7,7 +7,6 @@ class NoteItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var date = DateTime.now().toString();
-
     var dateParse = DateTime.parse(date);
     return GestureDetector(
       onTap: (){
