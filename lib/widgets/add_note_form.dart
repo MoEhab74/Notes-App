@@ -46,7 +46,6 @@ class _AddNoteFormState extends State<AddNoteForm> {
               if (formKey.currentState!.validate()) {
                 formKey.currentState!.save();
                 // Add Note logic here
-               var addNoteProvider = BlocProvider.of<AddNoteCubit>(context);
               } else {
                 autovalidateMode = AutovalidateMode.always;
                 setState(() {});
