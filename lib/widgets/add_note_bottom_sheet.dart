@@ -49,6 +49,8 @@ class _AddNoteFormState extends State<AddNoteForm> {
           CustomElevatedBottom(text: 'Add',onPressed: (){
             if(formKey.currentState!.validate()){
               formKey.currentState!.save();
+              // Add Note logic here
+              
             } else{
               autovalidateMode = AutovalidateMode.always;
               setState(() {
