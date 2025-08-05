@@ -12,7 +12,7 @@ class NotesViewBody extends StatefulWidget {
 }
 
 class _NotesViewBodyState extends State<NotesViewBody> {
-
+  // Here we can fetsh all notes first before we trigger the cubit
   @override
   void initState() {
     BlocProvider.of<NotesCubit>(context).fetshAllNotes();

@@ -9,8 +9,8 @@ class NoteItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var date = DateTime.now().toString();
-    var dateParse = DateTime.parse(date);
+    // var date = DateTime.now().toString();
+    // var dateParse = DateTime.parse(date);
     return GestureDetector(
       onTap: (){
         Navigator.push(context, MaterialPageRoute(builder: (context){
@@ -52,7 +52,10 @@ class NoteItem extends StatelessWidget {
                   ),
                 ),
                 trailing: IconButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    await note.delete();
+                    // The Ui must be rebuilded
+                  },
                   icon: const Icon(
                     Icons.delete,
                     size: 50,
