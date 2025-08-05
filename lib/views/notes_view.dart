@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/constants.dart';
+import 'package:notes_app/cubits/notes_cubit.dart';
 import 'package:notes_app/widgets/add_note_bottom_sheet.dart';
 import 'package:notes_app/widgets/notes_view_body.dart';
 
@@ -8,33 +10,36 @@ class NotesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.all(16),
-        child: SizedBox(
-          height: 80,
-          width: 80,
-          child: FloatingActionButton(
-            backgroundColor: kPrimaryColor,
-            onPressed: () {
-              showModalBottomSheet(
-                isScrollControlled: true,
-                context: context,
-                builder: (context) {
-                  return const AddNoteBottomSheet();
-                },
-              );
-            },
-            shape: const CircleBorder(),
-            child: Icon(
-              Icons.add,
-              size: 32,
-              color: Color.fromARGB(255, 56, 66, 71),
+    return BlocProvider(
+      create: (context) => NotesCubit(),
+      child: Scaffold(
+        floatingActionButton: Padding(
+          padding: const EdgeInsets.all(16),
+          child: SizedBox(
+            height: 80,
+            width: 80,
+            child: FloatingActionButton(
+              backgroundColor: kPrimaryColor,
+              onPressed: () {
+                showModalBottomSheet(
+                  isScrollControlled: true,
+                  context: context,
+                  builder: (context) {
+                    return const AddNoteBottomSheet();
+                  },
+                );
+              },
+              shape: const CircleBorder(),
+              child: Icon(
+                Icons.add,
+                size: 32,
+                color: Color.fromARGB(255, 56, 66, 71),
+              ),
             ),
           ),
         ),
+        body: const NotesViewBody(),
       ),
-      body: const NotesViewBody(),
     );
   }
 }
