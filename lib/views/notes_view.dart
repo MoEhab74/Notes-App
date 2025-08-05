@@ -15,14 +15,22 @@ class NotesView extends StatelessWidget {
           height: 80,
           width: 80,
           child: FloatingActionButton(
-            backgroundColor:  kPrimaryColor,
+            backgroundColor: kPrimaryColor,
             onPressed: () {
-              showModalBottomSheet(context: context, builder: (context){
-                return const AddNoteBottomSheet();
-              });
+              showModalBottomSheet(
+                isScrollControlled: true,
+                context: context,
+                builder: (context) {
+                  return const AddNoteBottomSheet();
+                },
+              );
             },
             shape: const CircleBorder(),
-            child: Icon(Icons.add, size: 32,color: Color.fromARGB(255, 56, 66, 71),),
+            child: Icon(
+              Icons.add,
+              size: 32,
+              color: Color.fromARGB(255, 56, 66, 71),
+            ),
           ),
         ),
       ),
