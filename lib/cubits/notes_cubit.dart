@@ -4,18 +4,18 @@ import 'package:notes_app/constants.dart';
 import 'package:notes_app/cubits/notes_state.dart';
 import 'package:notes_app/models/note_model.dart';
 
-class NotesCubit extends Cubit {
+class NotesCubit extends Cubit<NotesState> {
   NotesCubit() : super(NotesInitial());
 
+  List<NoteModel>? notes;
+
   void fetshAllNotes()  {
-    try {
       var notesBox = Hive.box<NoteModel>(kNotesBox);
-      List<NoteModel> notesList = notesBox.values.toList();
+      notes = notesBox.values.toList();
+
+      
       // Pass note from the state
-      emit(NotesLoadedSuccessfully(notesList));
-    } catch (e) {
-      emit(NotesLoadedFailure(e.toString()));
-    }
+      // emit(NotesLoadedSuccessfully(notesList));
   }
         
 }
