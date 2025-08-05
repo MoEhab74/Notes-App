@@ -52,6 +52,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
                   title: title!,
                   subTitle: subTitle!,
                 );
+                // Trigger the cubit
                 BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
               } else {
                 autovalidateMode = AutovalidateMode.always;

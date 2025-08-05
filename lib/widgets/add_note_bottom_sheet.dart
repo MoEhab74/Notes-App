@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:notes_app/cubits/add_note_cubit.dart';
 import 'package:notes_app/cubits/notes_state.dart';
 import 'package:notes_app/widgets/add_note_form.dart';
@@ -18,21 +17,25 @@ class _AddNoteBottomSheetState extends State<AddNoteBottomSheet> {
   Widget build(BuildContext context) {
     return BlocConsumer<AddNoteCubit, AddNotesState>(
       listener: (context, state) {
-        if(state is AddNoteFailure){
+        if (state is AddNoteFailure) {
           print('Failed to add note due to ${state.errorMessage}');
         }
-        if(state is NoteAddedSuccessfully){
+        if (state is NoteAddedSuccessfully) {
           Navigator.pop(context);
         }
       },
       builder: (context, state) {
+        // AbsorbPointer ===> Prevent the user from taking any action while loading
         return AbsorbPointer(
           absorbing: state is AddNoteLoading ? true : false,
           child: Padding(
-            padding: EdgeInsets.only(left: 16, right: 16,bottom: MediaQuery.of(context).viewInsets.bottom ),
-            child: SingleChildScrollView(
-              child: const AddNoteForm(),
-              ),
+            padding: EdgeInsets.only(
+              left: 16,
+              right: 16,
+              // Make the screen of bottom sheet flixable with yhe keyboard 
+              bottom: MediaQuery.of(context).viewInsets.bottom,
+            ),
+            child: SingleChildScrollView(child: const AddNoteForm()),
           ),
         );
       },

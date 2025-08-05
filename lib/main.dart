@@ -9,10 +9,9 @@ import 'package:notes_app/views/notes_view.dart';
 
 void main() async {
   await Hive.initFlutter();
-  
   // Register the adaptor that u are going to store
   Hive.registerAdapter(NoteModelAdapter());
-  // open box
+  // open box of the same type of the model that u have made it as a TypeAdaptor
   await Hive.openBox<NoteModel>(kNotesBox);
   // Observer for cubit
   Bloc.observer = SimpleBlocObserver();
