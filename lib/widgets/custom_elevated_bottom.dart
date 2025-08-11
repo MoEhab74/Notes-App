@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/constants.dart';
+import 'package:notes_app/helper/constants.dart';
 
 class CustomElevatedBottom extends StatelessWidget {
   const CustomElevatedBottom({super.key, required this.text, required this.onPressed, this.isLoading = false});

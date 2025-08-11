@@ -25,14 +25,7 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
             title: 'Edit Note',
             icon: Icon(Icons.done, size: 35),
             onPressed: () {
-              // if()
-              widget.note!.title = title ?? widget.note!.title;
-              widget.note!.subTitle = content ?? widget.note!.subTitle;
-              // Update the note ===> save provided by hive
-              widget.note!.save();
-              // Refresh the UI by fetching all notes after updating the note
-              BlocProvider.of<NotesCubit>(context).fetshAllNotes();
-              Navigator.pop(context);
+              editNoteLogic(context);
             },
           ),
           const SizedBox(height: 42),
@@ -53,5 +46,15 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
         ],
       ),
     );
+  }
+
+  void editNoteLogic(BuildContext context) {
+    widget.note!.title = title ?? widget.note!.title;
+    widget.note!.subTitle = content ?? widget.note!.subTitle;
+    // Update the note ===> save provided by hive
+    widget.note!.save();
+    // Refresh the UI by fetching all notes after updating the note
+    BlocProvider.of<NotesCubit>(context).fetshAllNotes();
+    Navigator.pop(context);
   }
 }

@@ -4,6 +4,7 @@ import 'package:notes_app/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:notes_app/cubits/add_notes_state.dart';
 import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes_app/widgets/add_note_form.dart';
+import 'package:notes_app/helper/custom_snack_bar.dart';
 
 class AddNoteBottomSheet extends StatefulWidget {
   const AddNoteBottomSheet({super.key});
@@ -21,7 +22,10 @@ class _AddNoteBottomSheetState extends State<AddNoteBottomSheet> {
       child: BlocConsumer<AddNoteCubit, AddNotesState>(
         listener: (context, state) {
           if (state is AddNoteFailure) {
-            print('Failed to add note due to ${state.errorMessage}');
+            showSnackBar(
+              context,
+              'Add note failed because: ${state.errorMessage}',
+            );
           }
           if (state is NoteAddedSuccessfully) {
             // Refresh the UI by fetching all notes after adding the new note
