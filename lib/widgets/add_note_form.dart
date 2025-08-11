@@ -25,14 +25,14 @@ class _AddNoteFormState extends State<AddNoteForm> {
       child: Column(
         children: [
           const SizedBox(height: 24),
-          CustomTextField(
+          CustomTextFormField(
             hintText: 'Title',
             onSaved: (data) {
               title = data;
             },
           ),
           const SizedBox(height: 16),
-          CustomTextField(
+          CustomTextFormField(
             hintText: 'Content',
             maxLines: 5,
             onSaved: (data) {

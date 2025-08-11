@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class SimpleSearchIcon extends StatelessWidget {
-  const SimpleSearchIcon({super.key, required this.icon});
+  const SimpleSearchIcon({super.key, required this.icon, this.onPressed});
   final Icon icon;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +12,7 @@ class SimpleSearchIcon extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         color:  const Color.fromRGBO(255, 255, 255, 0.05),
       ),
-      child: IconButton(onPressed: () {}, icon: icon),
+      child: IconButton(onPressed: onPressed, icon: icon),
     );
   }
 }

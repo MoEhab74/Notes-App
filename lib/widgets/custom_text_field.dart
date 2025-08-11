@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/constants.dart';
 
-class CustomTextField extends StatelessWidget {
-  const CustomTextField({super.key, required this.hintText, this.maxLines = 1, this.onSaved});
+class CustomTextFormField extends StatelessWidget {
+  const CustomTextFormField({super.key, required this.hintText, this.maxLines = 1, this.onSaved, this.onChanged});
 
   final String hintText;
   final int maxLines;
   final void Function(String?)? onSaved;
+  final void Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +19,7 @@ class CustomTextField extends StatelessWidget {
           return null;
         }
       },
+      onChanged: onChanged,
       onSaved: onSaved,
       maxLines: maxLines,
       style: TextStyle(fontSize: 24),
