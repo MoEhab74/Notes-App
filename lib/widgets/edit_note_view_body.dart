@@ -25,6 +25,7 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
             title: 'Edit Note',
             icon: Icon(Icons.done, size: 35),
             onPressed: () {
+              // if()
               widget.note!.title = title ?? widget.note!.title;
               widget.note!.subTitle = content ?? widget.note!.subTitle;
               // Update the note ===> save provided by hive

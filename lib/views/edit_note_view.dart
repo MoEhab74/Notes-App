@@ -10,6 +10,7 @@ class EditNoteView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // Passing the note that i want to edit to the EditNoteViewBody
       body: EditNoteViewBody(note: note,),
     );
   }

@@ -16,6 +16,7 @@ class NoteItem extends StatelessWidget {
     return GestureDetector(
       onTap: (){
         Navigator.push(context, MaterialPageRoute(builder: (context){
+          // Passing the note that i want to edit to the EditNoteViewBody
           return EditNoteView(note: note,);
         },),);
       },
@@ -40,7 +41,7 @@ class NoteItem extends StatelessWidget {
                   child:  Text(
                     note.title ,
                     style: TextStyle(
-                      fontSize: 32,
+                      fontSize: 28,
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
                     ),
@@ -50,7 +51,7 @@ class NoteItem extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 16.0),
                   child:  Text(
                     note.subTitle,
-                    style: TextStyle(fontSize: 24, color: Colors.black54),
+                    style: TextStyle(fontSize: 22, color: Colors.black54),
                   ),
                 ),
                 trailing: IconButton(
@@ -61,7 +62,7 @@ class NoteItem extends StatelessWidget {
                   },
                   icon: const Icon(
                     Icons.delete,
-                    size: 50,
+                    size: 45,
                     color: Color.fromARGB(255, 56, 66, 71),
                   ),
                 ),
@@ -71,7 +72,7 @@ class NoteItem extends StatelessWidget {
                 child: Text(
                   // dateParse.toString().substring(0, 11),
                   note.date.toString().substring(0, 11),
-                  style: TextStyle(color: Colors.black54, fontSize: 22),
+                  style: TextStyle(color: Colors.black54, fontSize: 20),
                 ),
               ),
             ],
