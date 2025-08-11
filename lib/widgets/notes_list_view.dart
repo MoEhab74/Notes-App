@@ -10,19 +10,23 @@ class NotesListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Rebuild the UI after getting the notes, so we use a BlocBuilder
     return BlocBuilder<NotesCubit, NotesState>(
       builder: (context, state) {
         // Trigger the cubit
-        List<NoteModel> notes = BlocProvider.of<NotesCubit>(context).notes ?? [];
+        // fetshAllNotes method must be called before using notes list or it will return an empty list
+        List<NoteModel> notes =
+            BlocProvider.of<NotesCubit>(context).notes!;
         return Expanded(
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 24),
             child: ListView.builder(
+              // By default, ListView takes padding from itself, so we set it to 0
               padding: EdgeInsets.zero,
               shrinkWrap: true,
               itemCount: notes.length,
               itemBuilder: (context, index) {
-                return NoteItem(note: notes[index],);
+                return NoteItem(note: notes[index]);
               },
             ),
           ),

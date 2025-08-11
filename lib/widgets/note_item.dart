@@ -40,7 +40,7 @@ class NoteItem extends StatelessWidget {
                   child:  Text(
                     note.title ,
                     style: TextStyle(
-                      fontSize: 24,
+                      fontSize: 32,
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
                     ),
@@ -50,13 +50,13 @@ class NoteItem extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 16.0),
                   child:  Text(
                     note.subTitle,
-                    style: TextStyle(fontSize: 18, color: Colors.black54),
+                    style: TextStyle(fontSize: 24, color: Colors.black54),
                   ),
                 ),
                 trailing: IconButton(
                   onPressed: () {
                     note.delete();
-                    // The note must be deleted from the ui
+                    // The note must be deleted from the ui ===> Refresh the ui
                     BlocProvider.of<NotesCubit>(context).fetshAllNotes();
                   },
                   icon: const Icon(

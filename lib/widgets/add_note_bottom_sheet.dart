@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:notes_app/cubits/add_notes_state.dart';
+import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes_app/widgets/add_note_form.dart';
 
 class AddNoteBottomSheet extends StatefulWidget {
@@ -23,6 +24,8 @@ class _AddNoteBottomSheetState extends State<AddNoteBottomSheet> {
             print('Failed to add note due to ${state.errorMessage}');
           }
           if (state is NoteAddedSuccessfully) {
+            // Refresh the UI by fetching all notes after adding the new note
+            BlocProvider.of<NotesCubit>(context).fetshAllNotes();
             Navigator.pop(context);
           }
         },

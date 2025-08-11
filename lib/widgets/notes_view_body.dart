@@ -15,6 +15,7 @@ class _NotesViewBodyState extends State<NotesViewBody> {
   // Here we can fetsh all notes first before we trigger the cubit
   @override
   void initState() {
+    // Calling the cubit method to get all notes first before we trigger the cubit
     BlocProvider.of<NotesCubit>(context).fetshAllNotes();
     super.initState();
   }

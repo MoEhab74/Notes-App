@@ -11,11 +11,13 @@ class NotesCubit extends Cubit<NotesState> {
 
   void fetshAllNotes()  {
       var notesBox = Hive.box<NoteModel>(kNotesBox);
+      // The values of the hive box are stored in an Iterable (list)
+      // ===> convert it to a list so that we can use it
       notes = notesBox.values.toList();
+      // Pass note from the state
+      emit(NotesLoadedSuccessfully(notes!));
 
       
-      // Pass note from the state
-      // emit(NotesLoadedSuccessfully(notesList));
   }
         
 }
